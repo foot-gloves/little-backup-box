@@ -66,7 +66,7 @@ sudo sh -c "echo 0 > /sys/class/leds/led0/brightness"
 # sudo sh -c "echo heartbeat > /sys/class/leds/led1/trigger"
 
 # Copy contents of back up directory to gdrive via rclone
-# sudo rclone copy 
+# sudo rclone copy "$BACKUP_PATH" CAMERADUMP:/
 
 
 # Remove contents of back up directory
@@ -74,12 +74,11 @@ sudo sh -c "echo 0 > /sys/class/leds/led0/brightness"
 # find: the unix command for finding files / directories / links etc.
 # /path/to/base/dir: the directory to start your search in.
 # -type d: only find directories
-# -ctime +10: only consider the ones with modification time older than 10 days
+# -ctime +1: only consider the ones with modification time older than 1 days
 # -exec ... \;: for each such result found, do the following command in ...
 # rm -rf {}: recursively force remove the directory; the {} part is where the find result gets substituted into from the previous part.
 
-# sudo find /path/to/base/dir/* -type d -ctime +10 -exec rm -rf {} \;
-
+# sudo find /path/to/base/dir/* -type d -ctime +1 -exec rm -rf {} \;
 
 
 # Shutdown

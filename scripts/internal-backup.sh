@@ -80,6 +80,8 @@ sudo sh -c "echo 0 > /sys/class/leds/led0/brightness"
 
 # sudo find /path/to/base/dir/* -type d -ctime +1 -exec rm -rf {} \;
 
+# Turn off the PWR LED to indicate that the backup is completed
+sudo sh -c "echo 0 > /sys/class/leds/led1/brightness"
 
 # Shutdown
 sync

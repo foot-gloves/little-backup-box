@@ -25,6 +25,9 @@ source "$CONFIG"
 # Set the ACT LED to heartbeat
 sudo sh -c "echo heartbeat > /sys/class/leds/led0/trigger"
 
+# Set Power LED to heartbeat
+# sudo sh -c "echo heartbeat > /sys/class/leds/led1/trigger"
+
 # Wait for a USB storage device (e.g., a USB flash drive)
 STORAGE=$(ls /dev/* | grep "$STORAGE_DEV" | cut -d"/" -f3)
 while [ -z ${STORAGE} ]
@@ -57,6 +60,27 @@ rsync -av "$STORAGE_MOUNT_POINT"/ "$BACKUP_PATH"
 
 # Turn off the ACT LED to indicate that the backup is completed
 sudo sh -c "echo 0 > /sys/class/leds/led0/brightness"
+
+
+# Set Power LED to heartbeat to indicate start of rclone
+# sudo sh -c "echo heartbeat > /sys/class/leds/led1/trigger"
+
+# Copy contents of back up directory to gdrive via rclone
+# sudo rclone copy 
+
+
+# Remove contents of back up directory
+
+# find: the unix command for finding files / directories / links etc.
+# /path/to/base/dir: the directory to start your search in.
+# -type d: only find directories
+# -ctime +10: only consider the ones with modification time older than 10 days
+# -exec ... \;: for each such result found, do the following command in ...
+# rm -rf {}: recursively force remove the directory; the {} part is where the find result gets substituted into from the previous part.
+
+# sudo find /path/to/base/dir/* -type d -ctime +10 -exec rm -rf {} \;
+
+
 
 # Shutdown
 sync

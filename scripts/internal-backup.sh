@@ -25,6 +25,10 @@ source "$CONFIG"
 # Set the ACT LED to heartbeat
 sudo sh -c "echo heartbeat > /sys/class/leds/led0/trigger"
 
+#Set "USB inserted" state to 0
+# USBIN=0
+
+
 # Set Power LED to heartbeat
 # sudo sh -c "echo heartbeat > /sys/class/leds/led1/trigger"
 
@@ -38,6 +42,9 @@ done
 
 # When the USB storage device is detected, mount it
 mount /dev/"$STORAGE_DEV" "$STORAGE_MOUNT_POINT"
+
+#insert variable to hold "USB inserted state"
+#USBIN=1
 
 # Set the ACT LED to blink at 1000ms to indicate that the storage device has been mounted
 sudo sh -c "echo timer > /sys/class/leds/led0/trigger"
